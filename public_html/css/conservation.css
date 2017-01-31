@@ -1,0 +1,40 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 31, 2017, 11:44:12 AM
+    Author     : Reed92
+*/
+
+html { height: 100% }
+
+body{
+    background-image:    url(images/conservation_background.png);
+    background-size:     cover;                     
+    background-repeat:   no-repeat;
+    background-size:     100% 100%;
+}
+
+#company_logo_container{ margin-top: 2%; }
+
+#conservation_text{
+    text-align: center;
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 22.5px;
+    margin-top: 10%;
+}
+
+#conservation_para1, #conservation_para2, #conservation_para3, #conservation_para4{
+    text-align: left;
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 15px;
+    margin: 0;
+    padding: 0;
+    margin-left: 6%;
+    margin-top: 5%;
+}
+

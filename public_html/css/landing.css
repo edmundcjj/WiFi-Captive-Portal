@@ -19,10 +19,51 @@ body{
 
 #company_logo_container{ margin-top: 2%; }
 
-#text_style{
-    margin-top:     15%;
+#text_style_1{
+    margin-top:     8%;
     text-align:     center;
     font-family:    Roboto;
-    font-size:      50px;
+    font-size:      40px;
     font-weight:    bold;
+}
+#text_style_2{
+    text-align:     center;
+    font-family:    Roboto;
+    font-size:      40px;
+    font-weight:    bold;
+}
+#text_style_3{
+    text-align:     center;
+    font-family:    Roboto;
+    font-size:      40px;
+    font-weight:    bold;
+}
+
+#line1{
+    margin-top: 25%;
+}
+
+#separation_text{
+    text-align:     center;
+    font-family:    Roboto;
+    font-size:      40px;
+    font-weight:    bold;
+}
+
+#line2{
+    margin-top: 25%;
+}
+
+#signup_bt{
+    text-align: center;
+}
+
+#terms_conditions{
+    padding: 0;
+    padding-left: 4%;
+    padding-right: 4%;
+    text-align: center;
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 120%;
 }
