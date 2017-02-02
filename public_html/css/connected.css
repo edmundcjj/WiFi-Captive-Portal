@@ -20,22 +20,36 @@ body{
 #company_logo_container{ margin-top: 2%; }
 
 #connected_text{
-    margin-top:     8%;
+    margin: 0;
+    margin-top:     5%;
+    margin-bottom:  3%;
     text-align:     center;
     font-family:    Roboto;
     font-size:      200%;
     font-weight:    bold;
 }
 
-#blippad_ad{
-    margin-top: 5%;
+#feeding_time, #feeding_name, #show_time, #show_name{
+    font-family: Roboto;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+#feeding_pic, #feeding_details, #show_pic, #show_details{
+    margin-bottom: 2%;
+}
+
+#blippar_ad{
+    margin-top: 1%;
 }
 
 #play_store_bt{
-    margin-top: 4.2%;
+    margin-top: 2%;
 }
 
 #app_store_bt{
-    margin-top: 3%;
+    margin-top: 0.5%;
 }
 
