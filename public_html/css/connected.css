@@ -22,23 +22,59 @@ body{
 #connected_text{
     margin: 0;
     margin-top:     5%;
-    margin-bottom:  3%;
+/*    margin-bottom:  1%;*/
     text-align:     center;
     font-family:    Roboto;
     font-size:      200%;
     font-weight:    bold;
 }
 
+#show_details, #show_pic_frame, #feeding_pic_frame, #feeding_details{
+    padding: 0;
+}
+
+#show_details, #feeding_details{
+    padding-left: 2%;
+}
+
+#show_title, #feeding_title{
+    font-family: Roboto;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
 #feeding_time, #feeding_name, #show_time, #show_name{
     font-family: Roboto;
     font-weight: bold;
     text-align: center;
+    vertical-align: middle;
     margin: 0;
     padding: 0;
 }
 
 #feeding_pic, #feeding_details, #show_pic, #show_details{
     margin-bottom: 2%;
+}
+
+#feeding_pic{
+    padding-left: 3%;
+}
+
+#show_pic{
+    padding-right: 3%;
+}
+
+#promo_pic_frame, #conservation_pic_frame{
+    padding: 0;
+}
+
+#promo_pic_frame{
+    padding-right: 1%;
+}
+
+#conservation_pic_frame{
+    padding-left: 1%;
 }
 
 #blippar_ad{

@@ -4,7 +4,8 @@
         <title>WiFi Captive Portal</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <meta name="google-signin-client_id" content="150230066835-h3l2gad8r84b1fqge2mf8gvuh2srjd1o.apps.googleusercontent.com">
+            
         <!--Custom CSS-->
         <link rel="stylesheet" href="css/landing.css">
         
@@ -55,26 +56,36 @@
                 <div class="col-xs-12"></div>
                 <div class="col-xs-12">
                     <!--Facebook social log in-->
-                    <div class="col-xs-6">
-                        <img class="img-responsive" src="images/fb_icon.png" alt="">
+                    <div class="col-xs-6" style="padding-right: 0; margin: 0">
+                        
                     </div>
-                    <!--Google+ social log in-->
-                    <div class="col-xs-6">
-                        <img class="img-responsive" src="images/g_icon.png" alt="">
+                    <!--Google social log in-->
+                    <div class="col-xs-6" style="padding-right: 0; margin: 0">
+                        <div id="my-signin2" class="img-responsive center-block"></div>
+                        <script>
+                            function onSuccess(googleUser) {
+                              console.log('Logged in as: ' + googleUser.getBasicProfile().getEmail());
+                            }
+                            function onFailure(error) {
+                              console.log(error);
+                            }
+                            function renderButton() {
+                              gapi.signin2.render('my-signin2', {
+                                'scope': 'profile email',
+                                'longtitle': false,
+                                'theme': 'dark',
+                                'onsuccess': onSuccess,
+                                'onfailure': onFailure
+                              });
+                            }
+                        </script>
                     </div>
                 </div>
 
-                <!--Separation Text-->
-                <div class="col-xs-12">
-                    <div class="col-xs-5" style="padding-right: 0; margin: 0">
-                        <img class="img-responsive center-block" id="line1" src="images/line.png" alt="">
-                    </div>
-                    <div class="col-xs-2" style="padding: 0; margin: 0">
-                        <p id="separation_text">or</p>
-                    </div>
-                    <div class="col-xs-5" style="padding-left: 0; margin: 0">
-                        <img class="img-responsive center-block" id="line2" src="images/line.png" alt="">
-                    </div>
+                <!--Separation Line-->
+                <div class="col-xs-1" style="padding: 0; margin: 0"></div>
+                <div class="col-xs-10" style="padding: 0; margin: 0">
+                    <div class="customHr">.</div>
                 </div>
 
                 <!--Email Field-->
@@ -93,7 +104,6 @@
                                         <input type="submit" value="Agree and Sign up" name="subscribe" id="mc-embedded-subscribe" class="button" onclick="nextPage()">
                                     </div>
                                 </div>
-                                
                             </div>
                         </form>
                     </div>
@@ -126,6 +136,7 @@
         return re.test(email);
     }
     </script>
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
     
     </body>
 </html>

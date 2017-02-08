@@ -43,11 +43,17 @@ body{
     margin-top: 25%;
 }
 
-#separation_text{
-    text-align:     center;
-    font-family:    Roboto;
-    font-size:      40px;
-    font-weight:    bold;
+#my-signin2{
+    text-align: center;
+}
+
+.customHr{
+    font-size: 1px;
+    color: rgba(0, 0, 0, 0);
+    line-height: 3px;
+    background-color: grey;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 #line2{

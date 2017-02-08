@@ -5,56 +5,75 @@
  */
 
 // Variables
-var current_time = "";                                                      // Get current time
+var current_time = 0;                                                       // Get current time
 var next_show_time = 0;                                                     // Next earliest possible show time
 var next_feeding_time = 0;                                                  // Next earliest possible feeding time
-var hours, mins = 0;                                                        // Current time in hours and minutes
-var show_time = "";                                                         // Time of animal show
-var show_name = "";                                                         // Name of the animal show
-var feeding_time = "";                                                      // Time of feeding show
-var feeding_name = "";                                                      // Name of the animal that is being fed by zookepers
-var temp_feeding_list = {};                         // Array to store list of feeding and show timings
-var feeding_list = [];
-var temp_show_list  = {};
-var show_list = [];
-var feeding_boolean, show_boolean = false;                                  // Check if feeding or show node exists
+var feeding_exhibit_name = "";                                              // Name of exhibit for feeding time
+var show_exhibit_name = "";                                                 // Name of exhibit for show time
 var database = firebase.database();                                         // Reference to firebase database
+var feeding_ref = database.ref("/Feeding");                                 // Reference to Feeding node
+var show_ref = database.ref("/Show");                                       // Reference to Show node
+var show_not_found = true;                                                  // Boolean value to determine show found or not
+var feeding_not_found = true;                                               // Boolean value to determine feeding found or not
 
-// Get current time
-var time = new Date();
-hours = time.getHours();
-mins = time.getMinutes();
-current_time = (hours * 100) + mins;
+// Function to get current time
+function get_current_time(){
+    var time = new Date();
+    hours = time.getHours();
+    mins = time.getMinutes();
+    return((hours * 100) + mins);
+}
 
-// Save details of feeding and show into feeding_list and show_list respectively
-var all_ref = database.ref();
-all_ref.once("value")
-    .then(function(allTimingsSnapshot){
-        allTimingsSnapshot.forEach(function(childSnapshot){
-            var key = childSnapshot.key;
-            if (childSnapshot.hasChild("Feeding")){
-                var feeding_exhibit_url = String(key) + "/Feeding/exhibit";
-                var feeding_exhibit_ref = database.ref(feeding_exhibit_url);
-                feeding_exhibit_ref.once("value")
-                        .then(function(snapshot){                       // Need to change how the data is stored, save as individual object then into array
-                            temp_feeding_list.push(key);
-                            temp_feeding_list.push(snapshot.val());
-                            feeding_list.push(temp_feeding_list);
-                            temp_feeding_list = [];
-                });
-            }
-            if (childSnapshot.hasChild("Show")){
-                var show_exhibit_url = String(key) + "/Show/exhibit";
-                var show_exhibit_ref = database.ref(show_exhibit_url);
-                show_exhibit_ref.once("value")
-                        .then(function(snapshot){                       // Need to change how the data is stored, save as individual object then into array
-                            temp_show_list.push(key);
-                            temp_show_list.push(snapshot.val());
-                            show_list.push(temp_show_list);
-                            temp_show_list = [];
-                });
+// Function to find show timing closest to current time
+function get_next_show_time(){
+    show_ref.once("value")
+    .then(function(allSnapshot){
+        allSnapshot.forEach(function(childSnapshot){
+            if(show_not_found){                                                                         // if a timing has not been found
+                if (childSnapshot.key > current_time){                                                  // Only interested in timings later than current time
+                    next_show_time = childSnapshot.key;                                                 // Store next earliest show timing
+                    
+                    var show_exhibit_ref = database.ref("/Show/" + String(next_show_time) + "/exhibit");
+                    show_exhibit_ref.once("value")
+                        .then(function(exhibitSnapshot){
+                            show_exhibit_name = exhibitSnapshot.val();                                  // Store exhibit name
+                            document.getElementById("show_time").innerHTML = next_show_time;            // Display feeding time
+                            document.getElementById("show_name").innerHTML = show_exhibit_name;         // Display feeding exhibit name
+//                            document.getElementById("show_pic").src = "images/" + String(feeding_exhibit_name) + ".png";
+                    });
+                    
+                    show_not_found = false;                                                             // Update found to be true to stop the forEach loop
+                }
             }
         });
     });
+}
+    
+// Function to find feeding timing closest to current time
+function get_next_feeding_time(){
+    feeding_ref.once("value")
+    .then(function(allSnapshot){
+        allSnapshot.forEach(function(childSnapshot){
+            if(feeding_not_found){                                                                      // if a timing has not been found
+                if (childSnapshot.key > current_time){                                                  // Only interested in timings later than current time
+                    next_feeding_time = childSnapshot.key;                                              // Store next earliest feding timing
+                    
+                    var feeding_exhibit_ref = database.ref("/Feeding/" + String(next_feeding_time) + "/exhibit");
+                    feeding_exhibit_ref.once("value")
+                        .then(function(exhibitSnapshot){
+                            feeding_exhibit_name = exhibitSnapshot.val();                               // Store exhibit name
+                            document.getElementById("feeding_time").innerHTML = next_feeding_time;      // Display feeding time
+                            document.getElementById("feeding_name").innerHTML = feeding_exhibit_name;   // Display feeding exhibit name
+//                            document.getElementById("feeding_pic").src = "images/" + String(feeding_exhibit_name) + ".png";
+                    });
+                    
+                    feeding_not_found = false;                                                          // Update found to be true to stop the forEach loop
+                }
+            }
+        });
+    });
+}
 
-// Search for next earliest possible feeding time
+current_time = get_current_time();          // Get current time in 24hr format
+get_next_show_time();                       // Get show time closest to current time
+get_next_feeding_time();                    // Get feeding time closest to current time
