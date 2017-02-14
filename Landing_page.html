@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>WiFi Captive Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:url" content="http://lipis.github.io/bootstrap-social/" />
+    <meta property="og:image" content="http://lipis.github.io/bootstrap-social/assets/img/bootstrap-social.png" />
+    <meta name="google-signin-client_id" content="150230066835-h3l2gad8r84b1fqge2mf8gvuh2srjd1o.apps.googleusercontent.com" />
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="css/docs.css" />
+    <link rel="stylesheet" type="text/css" href="css/landing.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap-social.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn-images.mailchimp.com/embedcode/classic-10_7.css" />
+
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+</head>
+<body style="background-color: #fff">
+    <!-- Company Logo -->
+    <div class="col-md-12" style="padding-left: 6%; padding-right: 6%">
+        <img id="logo" class="img-responsive center-block" style="margin-top: 10%; margin-bottom: 10%" src="images/Company_logo.png" alt="">
+    </div>
+    <!-- Company Logo - END -->
+    <!-- Free WiFi Logo -->
+    <div class="col-md-12">
+        <img class="img-responsive center-block" id="free_wifi" src="images/free_wifi.jpg" alt="" style="margin-bottom: 3%">
+    </div>
+    <!-- Free WiFi Logo - END -->
+    <div class="container">
+        <!-- Login with Social Buttons - START -->
+        <div id="mc_embed_signup">
+            <form class="col-md-12" style="padding-top: 0" action="https://facebook.us14.list-manage.com/subscribe/post?u=79484c3d4445a3c10096c31db&amp;id=f88358e78c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                <div class="row text-center">
+                    <div class="col-md-6 col-sm-12">
+                        <button class="btn btn-block btn-social btn-facebook" id="facebook_sso" style="border-radius: 6px; text-align: center">
+                            <i class="fa fa-facebook" id="facebook_icon" aria-hidden="true" style="float: left"></i> 
+                            Sign in with Facebook
+                        </button>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="g-signin2" data-onsuccess="onSignIn">
+                            <button type="button" class="btn btn-block btn-social btn-google" id="google_sso" style="border-radius: 6px; text-align: center">
+                                <span class="fa fa-google" id="google_icon"></span>
+                                Sign in with Google
+                            </button>
+                        </div>
+                        <script>
+                            function onSignIn(googleUser) {
+                                var profile = googleUser.getBasicProfile();
+                                console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                                console.log('Name: ' + profile.getName());
+                                console.log('Image URL: ' + profile.getImageUrl());
+                                console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+                            }
+                        </script>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <img class="img-responsive center-block" src="images/separation.png" alt="" style="margin: 0; width: 100%; margin-top: 2%; margin-bottom: 2%">
+                </div>
+                <div id="mc_embed_signup_scroll">
+                    <div class="form-group" class="mc-field-group">
+                        <input style="text-align: center" type="email" class="form-control input-lg" name="EMAIL" id="mce-EMAIL" placeholder="example@domain.com" required>
+                    </div>
+                </div>
+                <div class="clear">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" name="subscribe" id="mc-embedded-subscribe" style="background-color: #338b00; margin: 0; width: 100%">Accept & Connect to WiFi</button>
+                </div>
+                <h5 style="text-align: center; color: #000; font-family: sans-serif; letter-spacing: 1px">By registering, I agree to the <a href="">Terms & Conditions</a></h5>
+                <h5 style="text-align: center; color: #000; font-family: sans-serif; letter-spacing: 1px; margin-top: 0.2%">and <a href="">Privacy Policy</a> or <a href="Connected.html">skip</a> for slow WiFi</h5>
+            </form>
+        </div>
+        <script type='text/javascript' src='https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+        <script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+        <!-- Login with Social Buttons - END -->
+    </div>
+
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+</body>
+</html>
