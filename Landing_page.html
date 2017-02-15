@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property="og:url" content="http://lipis.github.io/bootstrap-social/" />
     <meta property="og:image" content="http://lipis.github.io/bootstrap-social/assets/img/bootstrap-social.png" />
-    <meta name="google-signin-client_id" content="150230066835-h3l2gad8r84b1fqge2mf8gvuh2srjd1o.apps.googleusercontent.com" />
+    <meta name="google-signin-client_id" content="272248797096-ru6oe3d0rb7b3577dpumral5ubjoftlp.apps.googleusercontent.com" />
 
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.css" />
@@ -19,6 +19,39 @@
     <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 </head>
 <body style="background-color: #fff">
+    <!-- Facebook Social Sign-on Script -->
+    <script>
+        // Check login status of user and perform actions based on response received
+        function check_login(){
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    console.log('Logged in.');
+                    window.location = "Connected.html";
+                }
+                else {
+                    FB.login();
+                }
+            });
+        }
+        
+        // Initialize Facebook with default settings with appID of my own facebook account
+        window.fbAsyncInit = function() {
+            FB.init({
+              appId      : '1544386545588755',
+              cookie     : true,
+              xfbml      : true,
+              version    : 'v2.8'
+            });
+        };
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
+    </script>
+    
     <!-- Company Logo -->
     <div class="col-md-12" style="padding-left: 6%; padding-right: 6%">
         <img id="logo" class="img-responsive center-block" style="margin-top: 10%; margin-bottom: 10%" src="images/Company_logo.png" alt="">
@@ -31,39 +64,53 @@
     <!-- Free WiFi Logo - END -->
     <div class="container">
         <!-- Login with Social Buttons - START -->
-        <div id="mc_embed_signup">
-            <form class="col-md-12" style="padding-top: 0" action="https://facebook.us14.list-manage.com/subscribe/post?u=79484c3d4445a3c10096c31db&amp;id=f88358e78c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                <div class="row text-center">
-                    <div class="col-md-6 col-sm-12">
-                        <button class="btn btn-block btn-social btn-facebook" id="facebook_sso" style="border-radius: 6px; text-align: center">
-                            <i class="fa fa-facebook" id="facebook_icon" aria-hidden="true" style="float: left"></i> 
-                            Sign in with Facebook
+        <div class="col-md-12" id="mc_embed_signup">
+            <div class="row text-center">
+                <!-- Facebook Social Sign On Button -->
+                <div class="col-md-6 col-sm-12">
+                    <button class="btn btn-block btn-social btn-facebook" id="facebook_sso" style="border-radius: 6px; text-align: center" onclick="check_login()">
+                        <span class="fa fa-facebook" id="facebook_icon"></span> 
+                        Sign in with Facebook
+                    </button>
+                </div>
+                <!-- Google Social Sign On Button -->
+                <div class="col-md-6 col-sm-12">
+                    <div class="g-signin2" data-onsuccess="onSignIn">
+                        <button type="button" class="btn btn-block btn-social btn-google" id="google_sso" style="border-radius: 6px; text-align: center; width: 100%">
+                            <span class="fa fa-google" id="google_icon"></span>
+                            Sign in with Google
                         </button>
                     </div>
-                    <div class="col-md-6 col-sm-12">
-                        <div class="g-signin2" data-onsuccess="onSignIn">
-                            <button type="button" class="btn btn-block btn-social btn-google" id="google_sso" style="border-radius: 6px; text-align: center">
-                                <span class="fa fa-google" id="google_icon"></span>
-                                Sign in with Google
-                            </button>
-                        </div>
-                        <script>
-                            function onSignIn(googleUser) {
-                                var profile = googleUser.getBasicProfile();
-                                console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-                                console.log('Name: ' + profile.getName());
-                                console.log('Image URL: ' + profile.getImageUrl());
-                                console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-                            }
-                        </script>
-                    </div>
+                    <script>
+                        function onSignIn(googleUser) {
+                            // Useful data for your client-side scripts:
+                            var profile = googleUser.getBasicProfile();
+                            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+                            console.log('Full Name: ' + profile.getName());
+                            console.log('Given Name: ' + profile.getGivenName());
+                            console.log('Family Name: ' + profile.getFamilyName());
+                            console.log("Image URL: " + profile.getImageUrl());
+                            console.log("Email: " + profile.getEmail());
+
+                            // The ID token you need to pass to your backend:
+                            var id_token = googleUser.getAuthResponse().id_token;
+                            console.log("ID Token: " + id_token);
+                            
+                            onSuccess(googleUser);
+                        };
+                        function onSuccess(googleUser) {
+//                            window.location = "Connected.html";
+                         }
+                    </script>
                 </div>
-                <div class="col-md-12">
-                    <img class="img-responsive center-block" src="images/separation.png" alt="" style="margin: 0; width: 100%; margin-top: 2%; margin-bottom: 2%">
-                </div>
-                <div id="mc_embed_signup_scroll">
-                    <div class="form-group" class="mc-field-group">
-                        <input style="text-align: center" type="email" class="form-control input-lg" name="EMAIL" id="mce-EMAIL" placeholder="example@domain.com" required>
+            </div>
+            <div class="col-md-12">
+                <img class="img-responsive center-block" src="images/separation.png" alt="" style="margin: 0; width: 100%; margin-top: 2%; margin-bottom: 2%">
+            </div>
+            <form style="padding-top: 0" action="https://facebook.us14.list-manage.com/subscribe/post?u=79484c3d4445a3c10096c31db&amp;id=f88358e78c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                <div class="form-group" id="mc_embed_signup_scroll">
+                    <div class="mc-field-group">
+                        <input style="text-align: center" type="email" class="required email" name="EMAIL" id="mce-EMAIL" placeholder="example@domain.com">
                     </div>
                 </div>
                 <div class="clear">
@@ -78,6 +125,6 @@
         <!-- Login with Social Buttons - END -->
     </div>
 
-    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </body>
 </html>
