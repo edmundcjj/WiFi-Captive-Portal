@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>WiFi Captive Portal</title>
+      <link rel="stylesheet" href="css/general.css">
+      <link rel="stylesheet" href="css/events_media_query.css">
+      <link rel="stylesheet" href="css/events.css">
+      <link href="https://fonts.googleapis.com/css?family=Ubuntu:300" rel="stylesheet">
+  </head>
+  <body class="container">
+    <h1 class="show_text">Show Times</h1>
+
+    <!-- Container to display animal show details -->
+    <div class="full">
+      <div class="half">
+        <img src="" alt="NO IMAGE" id="show_img">
+      </div>
+      <div class="half">
+        <h2 id="show_name"></h2>
+        <h2 id="show_location"></h2>
+        <h2 id="show_time"></h2>
+      </div>
+    </div>
+
+    <h1 class="feeding_text">Feeding Times</h1>
+
+    <!-- Container to display animal feeding details -->
+    <div class="full">
+      <div class="half">
+        <img src="" alt="NO IMAGE" id="feeding_img">
+      </div>
+      <div class="half">
+        <h2 id="feeding_name"></h2>
+        <h2 id="feeding_location"></h2>
+        <h2 id="feeding_time"></h2>
+      </div>
+    </div>
+  </body>
+
+  <!-- JavaScript to connect the web application to Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBf2Iprr7fy-z7rUt729fXUevzgLm_yIhw",
+      authDomain: "wifi-captive-portal-be502.firebaseapp.com",
+      databaseURL: "https://wifi-captive-portal-be502.firebaseio.com",
+      projectId: "wifi-captive-portal-be502",
+      storageBucket: "wifi-captive-portal-be502.appspot.com",
+      messagingSenderId: "272248797096"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+  <!-- Custom JavaScript file to extract data from Firebase -->
+  <script type="text/javascript" src="js/events.js"></script>
+</html>

@@ -1,0 +1,29 @@
+/* Your code goes here */
+
+.full{
+  display: flex;
+  flex-flow: row nowrap;
+  flex-basis: 100%;
+}
+
+.logo{padding-bottom: 0;}
+
+#button{
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+#TC{
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+}

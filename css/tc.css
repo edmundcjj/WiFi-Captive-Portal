@@ -1,0 +1,27 @@
+
+h2{margin-bottom: 10px;}
+
+h1{text-align: center;}
+
+p{
+  text-align: justify;
+  margin-top: 0;
+}
+
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.container > * {
+  color: black;
+  font-family: sans-serif;
+  padding: 20px;
+  margin: 10px;
+}
+
+.full{
+  display: flex;
+  flex-flow: column nowrap;
+  flex-basis: 100%;
+}

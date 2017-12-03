@@ -1,0 +1,32 @@
+
+@media (min-width:320px)  {
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+  .logo{margin-top: 150px;}
+  #logo, #free_wifi_bt{max-width: 500px;}
+}
+
+@media (min-width:480px)  {
+  /* smartphones, Android phones, landscape iPhone */
+  .logo{margin-top: 150px;}
+  #logo, #free_wifi_bt{max-width: 500px;}
+  h2{font-size: 1.3em;}
+}
+
+@media (min-width:600px)  {
+  /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+  .logo{margin-top: 130px;}
+  #logo, #free_wifi_bt{max-width: 600px;}
+  h2{font-size: 1.5em;}
+}
+
+@media (min-width:801px)  {
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+  .logo{margin-top: 150px;}
+  #logo, #free_wifi_bt{max-width: 800px;}
+  h2{font-size: 2em;}
+}
+
+@media (min-width:1025px) {
+  /* big landscape tablets, laptops, and desktops */
+  .logo{margin-top: 100px;}
+}
